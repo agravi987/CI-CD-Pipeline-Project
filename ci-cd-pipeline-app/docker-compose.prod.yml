@@ -1,0 +1,64 @@
+# ==============================================================================
+# Production Docker Compose for AWS EC2 Deployment
+# Pulls pre-built, tested & scanned images directly from Docker Hub
+# ==============================================================================
+
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: prod_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgrespassword}
+      POSTGRES_DB: ${DB_NAME:-devops_db}
+    volumes:
+      - prod_pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-devops_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - prod_network
+
+  server:
+    image: ${DOCKER_USERNAME}/devops-server:${IMAGE_TAG:-latest}
+    container_name: prod_backend
+    restart: always
+    environment:
+      PORT: 5000
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgrespassword}
+      DB_NAME: ${DB_NAME:-devops_db}
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - prod_network
+
+  client:
+    image: ${DOCKER_USERNAME}/devops-client:${IMAGE_TAG:-latest}
+    container_name: prod_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    networks:
+      - prod_network
+
+volumes:
+  prod_pgdata:
+
+networks:
+  prod_network:
+    driver: bridge
