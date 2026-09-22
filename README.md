@@ -31,7 +31,8 @@ ci-cd-pipeline-project/
     ├── 07-git-and-branching-strategy.md # 🌿 Feature branches, Pull Requests & PR Protection
     ├── 08-monitoring-and-rollback.md # 🩺 Live logs, health checks & 60-second rollbacks
     ├── 09-devops-interview-masterclass.md # 💼 Resume bullet points & top 10 interview answers
-    └── 10-common-docker-compose-errors-and-fixes.md # 🚨 Docker Compose debugging & lockfile errors fixed
+    ├── 10-common-docker-compose-errors-and-fixes.md # 🚨 Docker Compose debugging & lockfile errors fixed
+    └── 11-database-deployment-500-error-fix.md # 🐘 Fixing 500 error & missing table on EC2
 ```
 
 ---
@@ -70,6 +71,7 @@ Follow the guides in order to build your pipeline and deploy to AWS EC2:
 9. 🩺 **[08-monitoring-and-rollback.md](./docs/08-monitoring-and-rollback.md)** - Inspecting live logs and rolling back bad releases in seconds.
 10. 💼 **[09-devops-interview-masterclass.md](./docs/09-devops-interview-masterclass.md)** - Resume bullet points, elevator pitch, and interview questions.
 11. 🚨 **[10-common-docker-compose-errors-and-fixes.md](./docs/10-common-docker-compose-errors-and-fixes.md)** - Real-world Docker errors, `npm ci` vs `npm install`, and fixes.
+12. 🐘 **[11-database-deployment-500-error-fix.md](./docs/11-database-deployment-500-error-fix.md)** - Fixing 500 Internal Server Error on `/api/tasks` & table initialization.
 
 ---
 

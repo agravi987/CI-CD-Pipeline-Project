@@ -57,7 +57,17 @@ app.get('/api/tasks', async (req, res) => {
     res.json({ success: true, count: result.rows.length, data: result.rows });
   } catch (err) {
     console.error('Error fetching tasks:', err.message);
-    res.status(500).json({ success: false, error: 'Database query failed' });
+    // If the table doesn't exist yet, auto-create it and retry
+    if (err.message && err.message.includes('relation "tasks" does not exist')) {
+      try {
+        if (pool.initDB) await pool.initDB();
+        const retryResult = await pool.query('SELECT * FROM tasks ORDER BY id ASC');
+        return res.json({ success: true, count: retryResult.rows.length, data: retryResult.rows });
+      } catch (retryErr) {
+        console.error('Auto-recovery retry failed:', retryErr.message);
+      }
+    }
+    res.status(500).json({ success: false, error: 'Database query failed: ' + err.message });
   }
 });
 
