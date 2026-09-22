@@ -1,23 +1,23 @@
-const { Pool } = require('pg');
-require('dotenv').config();
+const { Pool } = require("pg");
+require("dotenv").config();
 
 // Create a PostgreSQL connection pool using environment variables
 const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '5432', 10),
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgrespassword',
-  database: process.env.DB_NAME || 'devops_db',
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT, 10) || 5432,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   // Connection timeout in milliseconds
   connectionTimeoutMillis: 5000,
 });
 
-pool.on('connect', () => {
-  console.log(' Connected to PostgreSQL database pool');
+pool.on("connect", () => {
+  console.log(" Connected to PostgreSQL database pool");
 });
 
-pool.on('error', (err) => {
-  console.error(' Unexpected PostgreSQL client error:', err.message);
+pool.on("error", (err) => {
+  console.error(" Unexpected PostgreSQL client error:", err.message);
 });
 
 // Auto-initialize the tasks table if it does not exist
@@ -35,7 +35,7 @@ const initDB = async () => {
     `);
 
     // Check if table is empty, insert default tasks if so
-    const countRes = await pool.query('SELECT COUNT(*) FROM tasks');
+    const countRes = await pool.query("SELECT COUNT(*) FROM tasks");
     if (parseInt(countRes.rows[0].count, 10) === 0) {
       await pool.query(`
         INSERT INTO tasks (title, description, completed) VALUES
@@ -44,14 +44,13 @@ const initDB = async () => {
         ('Set up GitHub Actions Pipeline', 'Automate testing, container building, and pushing to Docker Hub.', true),
         ('Deploy to AWS EC2', 'Successfully deployed and running on AWS EC2!', true);
       `);
-      console.log('✅ Default tasks seeded successfully');
+      console.log("✅ Default tasks seeded successfully");
     }
-    console.log('✅ Database schema verified');
+    console.log("✅ Database schema verified");
   } catch (err) {
-    console.error('⚠️ Database auto-initialization warning:', err.message);
+    console.error("⚠️ Database auto-initialization warning:", err.message);
   }
 };
 
 module.exports = pool;
 module.exports.initDB = initDB;
-
