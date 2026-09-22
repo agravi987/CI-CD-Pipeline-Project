@@ -30,7 +30,8 @@ ci-cd-pipeline-project/
     ├── 06-writing-ci-cd-pipelines.md # ⚡ GitHub Secrets, YAML breakdown & live deployment
     ├── 07-git-and-branching-strategy.md # 🌿 Feature branches, Pull Requests & PR Protection
     ├── 08-monitoring-and-rollback.md # 🩺 Live logs, health checks & 60-second rollbacks
-    └── 09-devops-interview-masterclass.md # 💼 Resume bullet points & top 10 interview answers
+    ├── 09-devops-interview-masterclass.md # 💼 Resume bullet points & top 10 interview answers
+    └── 10-common-docker-compose-errors-and-fixes.md # 🚨 Docker Compose debugging & lockfile errors fixed
 ```
 
 ---
@@ -68,6 +69,7 @@ Follow the guides in order to build your pipeline and deploy to AWS EC2:
 8. 🌿 **[07-git-and-branching-strategy.md](./docs/07-git-and-branching-strategy.md)** - Git branches, Pull Requests, and CI status checks.
 9. 🩺 **[08-monitoring-and-rollback.md](./docs/08-monitoring-and-rollback.md)** - Inspecting live logs and rolling back bad releases in seconds.
 10. 💼 **[09-devops-interview-masterclass.md](./docs/09-devops-interview-masterclass.md)** - Resume bullet points, elevator pitch, and interview questions.
+11. 🚨 **[10-common-docker-compose-errors-and-fixes.md](./docs/10-common-docker-compose-errors-and-fixes.md)** - Real-world Docker errors, `npm ci` vs `npm install`, and fixes.
 
 ---
 

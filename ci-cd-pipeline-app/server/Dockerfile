@@ -13,8 +13,8 @@ WORKDIR /app
 # Docker caches this layer! If package.json doesn't change, 'npm install' is skipped
 COPY package*.json ./
 
-# Step 4: Install only production dependencies for smaller image size & security
-RUN npm ci --only=production
+# Step 4: Install production dependencies
+RUN npm install --omit=dev
 
 # Step 5: Copy the application source code into the container
 COPY src/ ./src/

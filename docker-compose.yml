@@ -1,7 +1,6 @@
 # ==============================================================================
-# Docker Compose for Local Development / Testing
-# Builds images directly from local source code
-# Usage: docker compose up --build
+# Root Docker Compose for Local Development
+# Allows running 'docker compose up --build' directly from ci-cd-pipeline-project
 # ==============================================================================
 
 services:
@@ -18,7 +17,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./ci-cd-pipeline-app/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d devops_db"]
       interval: 5s
@@ -30,7 +29,7 @@ services:
   # 2. Express Backend API Service
   server:
     build:
-      context: ./server
+      context: ./ci-cd-pipeline-app/server
       dockerfile: Dockerfile
     container_name: devops_backend
     restart: unless-stopped
@@ -53,7 +52,7 @@ services:
   # 3. React Frontend Service (Served via Nginx)
   client:
     build:
-      context: ./client
+      context: ./ci-cd-pipeline-app/client
       dockerfile: Dockerfile
     container_name: devops_frontend
     restart: unless-stopped
@@ -64,11 +63,9 @@ services:
     networks:
       - devops_network
 
-# Named volume for persistent database storage
 volumes:
   pgdata:
 
-# Isolated bridge network for internal container communication
 networks:
   devops_network:
     driver: bridge

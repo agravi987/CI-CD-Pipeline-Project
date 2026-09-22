@@ -3,8 +3,6 @@
 # Pulls pre-built, tested & scanned images directly from Docker Hub
 # ==============================================================================
 
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16-alpine
