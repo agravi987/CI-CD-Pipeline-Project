@@ -105,6 +105,23 @@ This triggers the CD pipeline, which builds and deploys the reverted clean code 
 
 ---
 
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: Running Containers on EC2 (`docker ps`)
+<!-- Replace with your screenshot path once taken -->
+![Docker PS on EC2](./screenshots/12-ec2-docker-ps.png)
+*Caption: Terminal connected to EC2 running docker ps showing all three production containers (prod_frontend, prod_backend, prod_postgres) active.*
+
+### 🖼️ Screenshot 2: Live Application Logs on EC2
+<!-- Replace with your screenshot path once taken -->
+![EC2 Container Logs](./screenshots/13-ec2-container-logs.png)
+*Caption: Real-time container logs showing incoming requests and database queries.*
+
+---
+
 ## ⏭️ Ready for the Final Masterclass?
 Prepare to impress recruiters and interviewers with your new CI/CD project:  
 👉 **[Go to Step 9: 09-devops-interview-masterclass.md](./09-devops-interview-masterclass.md)**

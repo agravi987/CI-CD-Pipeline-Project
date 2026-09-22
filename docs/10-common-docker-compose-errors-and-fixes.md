@@ -171,6 +171,23 @@ docker compose up --build
 
 ---
 
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: Successful Docker Compose Build
+<!-- Replace with your screenshot path once taken -->
+![Successful Docker Compose Build](./screenshots/14-docker-compose-build-success.png)
+*Caption: Terminal displaying successful container compilation after resolving the npm ci lockfile requirement.*
+
+### 🖼️ Screenshot 2: All Local Containers Running Healthy
+<!-- Replace with your screenshot path once taken -->
+![Docker Compose PS](./screenshots/15-docker-compose-ps-healthy.png)
+*Caption: Terminal running docker compose ps showing postgres (healthy), backend, and frontend active.*
+
+---
+
 ## 🎯 Summary Checklist
 
 - [x] Know the difference between `npm install` and `npm ci`.

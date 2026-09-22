@@ -155,6 +155,23 @@ Before closing your terminal, write down these 3 values:
 
 ---
 
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: AWS EC2 Instance Running & Security Groups
+<!-- Replace with your screenshot path once taken -->
+![AWS EC2 Instance Running](./screenshots/05-aws-ec2-instance-running.png)
+*Caption: AWS Console showing running EC2 instance with public IPv4 address and inbound security rules (22, 80, 5000).*
+
+### 🖼️ Screenshot 2: Docker Installed on EC2
+<!-- Replace with your screenshot path once taken -->
+![Docker Installed on EC2](./screenshots/06-aws-ec2-docker-installed.png)
+*Caption: Connected EC2 terminal verifying docker --version and docker compose version.*
+
+---
+
 ## ⏭️ Ready for Day 6?
 Your cloud server is ready and waiting. Now let's write our GitHub Actions workflows and deploy automatically!  
 👉 **[Go to Step 6: 06-writing-ci-cd-pipelines.md](./06-writing-ci-cd-pipelines.md)**

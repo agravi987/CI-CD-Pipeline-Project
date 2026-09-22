@@ -82,6 +82,23 @@ Here is how to create one:
 
 ---
 
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: Docker Hub Repositories Created
+<!-- Replace with your screenshot path once taken -->
+![Docker Hub Repositories](./screenshots/03-docker-hub-repositories.png)
+*Caption: Docker Hub dashboard showing devops-server and devops-client repositories.*
+
+### 🖼️ Screenshot 2: Personal Access Token (PAT) Generated
+<!-- Replace with your screenshot path once taken -->
+![Docker Hub Access Token](./screenshots/04-docker-hub-access-token.png)
+*Caption: Docker Hub Security settings showing the active personal access token.*
+
+---
+
 ## 🎯 What You Have Accomplished
 - [x] Created Docker Hub account.
 - [x] Created `devops-server` image repository.

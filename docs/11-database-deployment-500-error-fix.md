@@ -89,3 +89,21 @@ git commit -m "fix(db): add self-healing auto-initialization for tasks table"
 git push origin main
 ```
 GitHub Actions will deploy the self-healing container to EC2 automatically! 🚀
+
+---
+
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: 500 Error Resolved & Tasks Live in Browser
+<!-- Replace with your screenshot path once taken -->
+![500 Error Resolved](./screenshots/16-db-error-resolved-live-ui.png)
+*Caption: Live EC2 application showing tasks retrieved and rendered without 500 Internal Server Error.*
+
+### 🖼️ Screenshot 2: Database Schema & Seed Data Verified
+<!-- Replace with your screenshot path once taken -->
+![Database Schema Verified](./screenshots/17-db-table-verified.png)
+*Caption: EC2 terminal showing psql SELECT query returning seeded tasks records from postgres container.*
+

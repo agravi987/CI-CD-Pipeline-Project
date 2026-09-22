@@ -180,6 +180,23 @@ npm test
 
 ---
 
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: Application Running Locally in Browser
+<!-- Replace with your screenshot path once taken -->
+![Local Application Dashboard](./screenshots/01-local-app-running.png)
+*Caption: React Frontend + Express Backend + PostgreSQL running locally at http://localhost with healthy badges.*
+
+### 🖼️ Screenshot 2: Automated Tests Passing in Terminal
+<!-- Replace with your screenshot path once taken -->
+![Automated Tests Passing](./screenshots/02-local-tests-passing.png)
+*Caption: Jest and Supertest test suite passing with 6/6 green tests.*
+
+---
+
 ## ⏭️ Ready for Day 3?
 Now let's examine the Dockerfiles and see how multi-stage builds work:  
 👉 **[Go to Step 3: 03-docker-and-containers.md](./03-docker-and-containers.md)**

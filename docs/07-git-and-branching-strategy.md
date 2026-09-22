@@ -102,6 +102,23 @@ Now it is physically impossible for anyone (including you!) to push broken code 
 
 ---
 
+## 📸 Proof of Work: Screenshots
+
+> [!TIP]
+> **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
+
+### 🖼️ Screenshot 1: Pull Request with CI Status Checks Passing
+<!-- Replace with your screenshot path once taken -->
+![Pull Request CI Checks](./screenshots/10-github-pr-status-checks.png)
+*Caption: GitHub Pull Request showing automated CI tests passing with green checkmarks.*
+
+### 🖼️ Screenshot 2: Branch Protection Rule Configured
+<!-- Replace with your screenshot path once taken -->
+![Branch Protection](./screenshots/11-github-branch-protection.png)
+*Caption: GitHub Repository Settings > Branches showing branch protection requiring PR reviews and status checks.*
+
+---
+
 ## ⏭️ Ready for Monitoring & Rollbacks?
 Learn how to inspect logs and fix broken releases:  
 👉 **[Go to Step 8: 08-monitoring-and-rollback.md](./08-monitoring-and-rollback.md)**

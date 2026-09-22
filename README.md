@@ -56,6 +56,19 @@ Now open your web browser:
 
 ---
 
+## 📸 Proof of Work & Screenshots Gallery
+
+> [!TIP]
+> Add your screenshots into `docs/screenshots/` and update these links to showcase your live project:
+
+| Milestone | Screenshot Preview | Status |
+| :--- | :--- | :---: |
+| **1. Local 3-Tier Stack** | ![Local App](./docs/screenshots/01-local-app-running.png) | 🟡 *Add screenshot* |
+| **2. GitHub Actions Green Pipeline** | ![CI/CD Pipeline](./docs/screenshots/08-github-actions-success.png) | 🟡 *Add screenshot* |
+| **3. Live Application on AWS EC2** | ![Live on EC2](./docs/screenshots/09-live-ec2-deployment.png) | 🟡 *Add screenshot* |
+
+---
+
 ## 🗺️ Step-by-Step Learning Guide
 
 Follow the guides in order to build your pipeline and deploy to AWS EC2:
