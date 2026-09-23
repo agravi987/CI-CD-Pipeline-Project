@@ -35,6 +35,10 @@ ci-cd-pipeline-project/
     └── 11-database-deployment-500-error-fix.md # 🐘 Fixing 500 error & missing table on EC2
 ```
 
+### 🗺️ Project Architecture Diagram
+
+![Project Architecture Diagram](./Project-architecture-diagram.png)
+
 ---
 
 ## ⚡ Quick Start: Run Locally in 60 Seconds
@@ -63,9 +67,9 @@ Now open your web browser:
 
 | Milestone | Screenshot Preview | Status |
 | :--- | :--- | :---: |
-| **1. Local 3-Tier Stack** | ![Local App](./docs/screenshots/01-local-app-running.png) | 🟡 *Add screenshot* |
-| **2. GitHub Actions Green Pipeline** | ![CI/CD Pipeline](./docs/screenshots/08-github-actions-success.png) | 🟡 *Add screenshot* |
-| **3. Live Application on AWS EC2** | ![Live on EC2](./docs/screenshots/09-live-ec2-deployment.png) | 🟡 *Add screenshot* |
+| **1. Local 3-Tier Stack** | ![Local App](./docs/screenshots/01-application-running-docker-desktop.png) | ✅ Done |
+| **2. GitHub Actions Green Pipeline** | ![CI/CD Pipeline](./docs/screenshots/09-ci-cd-pipeline-passing.png) | ✅ Done |
+| **3. Live Application on AWS EC2** | ![Live on EC2](./docs/screenshots/10-application-live-on-ec2.png) | ✅ Done |
 
 ---
 
