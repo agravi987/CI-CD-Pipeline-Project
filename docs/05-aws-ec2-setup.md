@@ -33,13 +33,14 @@ Welcome to Day 5! 🚀 Today you are launching a real virtual computer in Amazon
 
 1. Log in to your [AWS Management Console](https://aws.amazon.com/console/).
 2. In the top search bar, search for **EC2** and click on the EC2 service.
-3. Make sure your AWS region (top right, e.g. *US East (N. Virginia)* or *ap-south-1 (Mumbai)*) is selected.
+3. Make sure your AWS region (top right, e.g. _US East (N. Virginia)_ or _ap-south-1 (Mumbai)_) is selected.
 4. Click the big orange **"Launch instance"** button. 🚀
 
 ### Configure the Machine:
+
 - **Name**: `devops-production-server`
-- **Application and OS Images (AMI)**: Select **Ubuntu** (Choose `Ubuntu Server 24.04 LTS` or `22.04 LTS`, 64-bit x86). Look for the green badge: *Free tier eligible*.
-- **Instance type**: Select `t2.micro` (or `t3.micro` depending on region). *Free tier eligible*.
+- **Application and OS Images (AMI)**: Select **Ubuntu** (Choose `Ubuntu Server 24.04 LTS` or `22.04 LTS`, 64-bit x86). Look for the green badge: _Free tier eligible_.
+- **Instance type**: Select `t2.micro` (or `t3.micro` depending on region). _Free tier eligible_.
 
 ---
 
@@ -65,18 +66,18 @@ The SSH Key is the digital master key you use to log into your Linux server:
 AWS blocks all incoming internet traffic by default. We must open **Port 22** (for SSH) and **Port 80** (for Web users):
 
 1. Under **Network settings**, click **Edit**.
-2. Keep *Auto-assign public IP* set to **Enable**.
-3. Under **Firewall (security groups)**, choose *Create security group*:
+2. Keep _Auto-assign public IP_ set to **Enable**.
+3. Under **Firewall (security groups)**, choose _Create security group_:
    - **Security group name**: `devops-web-sg`
    - **Description**: `Allow SSH and Web HTTP traffic`
 
 Add these **3 Inbound Rules**:
 
-| Rule # | Type | Port | Source | Why is this needed? |
-| :---: | :--- | :---: | :--- | :--- |
-| **1** | **SSH** | `22` | `0.0.0.0/0` (Anywhere) | Lets GitHub Actions and you connect via SSH |
-| **2** | **HTTP** | `80` | `0.0.0.0/0` (Anywhere) | Lets anyone view your React website |
-| **3** | **Custom TCP** | `5000` | `0.0.0.0/0` (Anywhere) | Direct access to backend API / health endpoint |
+| Rule # | Type           |  Port  | Source                 | Why is this needed?                            |
+| :----: | :------------- | :----: | :--------------------- | :--------------------------------------------- |
+| **1**  | **SSH**        |  `22`  | `0.0.0.0/0` (Anywhere) | Lets GitHub Actions and you connect via SSH    |
+| **2**  | **HTTP**       |  `80`  | `0.0.0.0/0` (Anywhere) | Lets anyone view your React website            |
+| **3**  | **Custom TCP** | `5000` | `0.0.0.0/0` (Anywhere) | Direct access to backend API / health endpoint |
 
 4. Click the orange **Launch instance** button at the bottom right! 🎉
 
@@ -89,11 +90,12 @@ Add these **3 Inbound Rules**:
 3. Click on the instance and copy its **Public IPv4 address** (e.g. `54.210.120.45`).
 
 ### 🖱️ Easiest Connection Method (Browser-based):
+
 - Select the instance checkbox.
 - Click **Connect** (top right).
 - Select **EC2 Instance Connect**.
 - Click the orange **Connect** button.
-- *A black Linux terminal window will open right inside your web browser!* 🖥️
+- _A black Linux terminal window will open right inside your web browser!_ 🖥️
 
 ---
 
@@ -122,13 +124,16 @@ mkdir -p ~/devops-app
 ```
 
 ### ✅ Verify the Installation:
+
 Type these two test commands:
+
 ```bash
 docker --version
 docker compose version
 ```
 
 You should see:
+
 ```text
 Docker version 24.x.x (or 26.x.x)
 Docker Compose version v2.x.x
@@ -160,18 +165,15 @@ Before closing your terminal, write down these 3 values:
 > [!TIP]
 > **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
 
-### 🖼️ Screenshot 1: AWS EC2 Instance Running & Security Groups
-<!-- Replace with your screenshot path once taken -->
-![AWS EC2 Instance Running](./screenshots/05-aws-ec2-instance-running.png)
-*Caption: AWS Console showing running EC2 instance with public IPv4 address and inbound security rules (22, 80, 5000).*
+### 🖼️ Screenshot 1: AWS EC2 Instance Running
+
+![AWS EC2 Instance Running](./screenshots/06-aws-ec2-instance-running.png)
 
 ### 🖼️ Screenshot 2: Docker Installed on EC2
-<!-- Replace with your screenshot path once taken -->
-![Docker Installed on EC2](./screenshots/06-aws-ec2-docker-installed.png)
-*Caption: Connected EC2 terminal verifying docker --version and docker compose version.*
 
----
+![Docker Installed on EC2](./screenshots/08-docker-installed-on-ec2.png)
 
 ## ⏭️ Ready for Day 6?
+
 Your cloud server is ready and waiting. Now let's write our GitHub Actions workflows and deploy automatically!  
 👉 **[Go to Step 6: 06-writing-ci-cd-pipelines.md](./06-writing-ci-cd-pipelines.md)**

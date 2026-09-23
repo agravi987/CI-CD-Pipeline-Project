@@ -27,6 +27,7 @@ Think of Docker Hub as a **central warehouse** for shipping containers:
 ## 📋 Step-by-Step Instructions
 
 ### Step 1: Create a Free Docker Hub Account 👤
+
 1. Open your browser and go to [https://hub.docker.com/](https://hub.docker.com/).
 2. Click **Sign Up** (it's 100% free).
 3. Choose your username (for example: `alexdevops`).
@@ -35,18 +36,21 @@ Think of Docker Hub as a **central warehouse** for shipping containers:
 ---
 
 ### Step 2: Create Two Repositories 📦
+
 You need two separate repositories: one for the Backend, one for the Frontend.
 
 #### 🟢 Repository 1: The Backend API
+
 1. In the top navigation bar, click **Repositories**.
 2. Click the blue **Create repository** button.
 3. Fill in:
    - **Repository Name**: `devops-server`
    - **Description**: `Express.js REST API for CI/CD project`
-   - **Visibility**: Select **Public** 🌐 *(Public allows EC2 to pull images without extra configuration)*.
+   - **Visibility**: Select **Public** 🌐 _(Public allows EC2 to pull images without extra configuration)_.
 4. Click **Create**.
 
 #### ⚛️ Repository 2: The Frontend UI
+
 1. Click **Create repository** again.
 2. Fill in:
    - **Repository Name**: `devops-client`
@@ -55,6 +59,7 @@ You need two separate repositories: one for the Backend, one for the Frontend.
 3. Click **Create**.
 
 🎉 You now have two repositories ready:
+
 - `<YOUR_USERNAME>/devops-server`
 - `<YOUR_USERNAME>/devops-client`
 
@@ -88,18 +93,17 @@ Here is how to create one:
 > **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
 
 ### 🖼️ Screenshot 1: Docker Hub Repositories Created
-<!-- Replace with your screenshot path once taken -->
-![Docker Hub Repositories](./screenshots/03-docker-hub-repositories.png)
-*Caption: Docker Hub dashboard showing devops-server and devops-client repositories.*
+
+![Docker Hub Repositories Created](./screenshots/04-docker-hub-repositories.png)
 
 ### 🖼️ Screenshot 2: Personal Access Token (PAT) Generated
-<!-- Replace with your screenshot path once taken -->
-![Docker Hub Access Token](./screenshots/04-docker-hub-access-token.png)
-*Caption: Docker Hub Security settings showing the active personal access token.*
+
+![Personal Access Token (PAT) Generated](./screenshots/05-docker-hub-pat-generated.png)
 
 ---
 
 ## 🎯 What You Have Accomplished
+
 - [x] Created Docker Hub account.
 - [x] Created `devops-server` image repository.
 - [x] Created `devops-client` image repository.
@@ -108,5 +112,6 @@ Here is how to create one:
 ---
 
 ## ⏭️ Ready for Day 5?
+
 Now let's fire up our cloud virtual machine on Amazon Web Services:  
 👉 **[Go to Step 5: 05-aws-ec2-setup.md](./05-aws-ec2-setup.md)**

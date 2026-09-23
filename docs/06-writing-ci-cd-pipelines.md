@@ -11,6 +11,7 @@ Never put passwords, tokens, or SSH keys inside your code. If you do, hackers sc
 GitHub provides a secure vault called **Repository Secrets**. Secrets are encrypted and passed into your workflow runners only when needed.
 
 ### 🧭 How to Add Secrets in GitHub:
+
 1. Go to your repository page on GitHub.
 2. Click **⚙️ Settings** (top tabs).
 3. In the left menu, scroll down to **Secrets and variables** $\rightarrow$ Click **Actions**.
@@ -49,9 +50,9 @@ name: CI Pipeline (Continuous Integration)
 # 1. Trigger when code is pushed or a PR is opened
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   # -------------------------------------------------------------
@@ -60,13 +61,13 @@ jobs:
   backend-test:
     runs-on: ubuntu-latest # Spawns a fresh Ubuntu virtual runner
     steps:
-      - uses: actions/checkout@v4       # Step 1: Clone repo into runner
-      - uses: actions/setup-node@v4     # Step 2: Install Node.js 20
+      - uses: actions/checkout@v4 # Step 1: Clone repo into runner
+      - uses: actions/setup-node@v4 # Step 2: Install Node.js 20
         with:
           node-version: 20
-      - run: npm install                # Step 3: Install backend dependencies
+      - run: npm install # Step 3: Install backend dependencies
         working-directory: ./server
-      - run: npm test                   # Step 4: Run automated tests!
+      - run: npm test # Step 4: Run automated tests!
         working-directory: ./server
 
   # -------------------------------------------------------------
@@ -95,9 +96,9 @@ jobs:
       - run: docker build -t test-backend:local ./server
       - uses: aquasecurity/trivy-action@master # Scans for CVEs
         with:
-          image-ref: 'test-backend:local'
-          format: 'table'
-          severity: 'CRITICAL,HIGH'
+          image-ref: "test-backend:local"
+          format: "table"
+          severity: "CRITICAL,HIGH"
 ```
 
 ---
@@ -109,6 +110,7 @@ Location: `ci-cd-pipeline-app/.github/workflows/cd.yml`
 This file defines the **Automated Delivery System**. It triggers whenever code is merged into `main`.
 
 ### The 3 Stages of CD:
+
 ```
 1. 🐳 Build & Push Images  ──► 2. ☁️ SSH & Restart on EC2  ──► 3. 🩺 Verify Health Check
    (Tagged latest & SHA)          (docker compose up -d)           (Pings /api/health)
@@ -117,6 +119,7 @@ This file defines the **Automated Delivery System**. It triggers whenever code i
 ### Let's Read the Key Parts:
 
 #### A. Build and Push to Docker Hub
+
 ```yaml
 - name: Log in to Docker Hub
   uses: docker/login-action@v3
@@ -133,9 +136,11 @@ This file defines the **Automated Delivery System**. It triggers whenever code i
       ${{ secrets.DOCKER_USERNAME }}/devops-server:latest
       ${{ secrets.DOCKER_USERNAME }}/devops-server:${{ github.sha }}
 ```
+
 > 💡 Notice `${{ github.sha }}`? Every time you commit, Git creates a unique identifier (like `e9a31b4`). Tagging images with this SHA allows you to instantly rollback to any previous version!
 
 #### B. Deploy to AWS EC2 over SSH
+
 ```yaml
 - name: Copy Compose and Database files to EC2
   uses: appleboy/scp-action@v0.1.7
@@ -162,6 +167,7 @@ This file defines the **Automated Delivery System**. It triggers whenever code i
 ```
 
 #### C. Post-Deployment Automated Health Check
+
 ```yaml
 - name: Verify Live API Health
   run: |
@@ -231,22 +237,20 @@ git push -u origin main
 > **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
 
 ### 🖼️ Screenshot 1: GitHub Actions Secrets Configured
-<!-- Replace with your screenshot path once taken -->
-![GitHub Secrets](./screenshots/07-github-secrets-configured.png)
-*Caption: GitHub Repository Settings > Secrets and variables > Actions showing the 5 required secrets (DOCKER_USERNAME, DOCKER_PASSWORD, EC2_HOST, EC2_USER, EC2_SSH_KEY).*
+
+![GitHub Actions Secrets Configured](./screenshots/07-github-actions-secrets-configured.png)
 
 ### 🖼️ Screenshot 2: GitHub Actions CI/CD Pipeline Passing (All Green)
-<!-- Replace with your screenshot path once taken -->
-![GitHub Actions All Green](./screenshots/08-github-actions-success.png)
-*Caption: Successful GitHub Actions workflow execution showing all stages passed (Tests, Trivy Scan, Docker Push, EC2 Deploy, Health Check).*
+
+![GitHub Actions CI/CD Pipeline Passing](./screenshots/09-ci-cd-pipeline-passing.png)
 
 ### 🖼️ Screenshot 3: Application Live on AWS EC2
-<!-- Replace with your screenshot path once taken -->
-![Live Application on AWS EC2](./screenshots/09-live-ec2-deployment.png)
-*Caption: Web browser visiting http://<EC2-PUBLIC-IP> displaying the live React application connected to PostgreSQL on AWS EC2.*
+
+![Application Live on AWS EC2](./screenshots/10-application-live-on-ec2.png)
 
 ---
 
 ## ⏭️ Ready for the Final Step?
+
 Now learn about Git branching strategies, monitoring, rollbacks, and interview mastery:  
 👉 **[Go to Step 7: 07-git-and-branching-strategy.md](./07-git-and-branching-strategy.md)**

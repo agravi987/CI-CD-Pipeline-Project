@@ -76,31 +76,33 @@ Because without a health check, you are flying blind! 🙈
 If a server crashes or the database connection is lost, you want an automated system to detect it in seconds.
 
 ### Let's inspect `server/src/app.js`:
+
 ```javascript
-app.get('/api/health', async (req, res) => {
-  let dbStatus = 'disconnected';
+app.get("/api/health", async (req, res) => {
+  let dbStatus = "disconnected";
   try {
     // 1. Send a quick test query to PostgreSQL
-    const dbRes = await pool.query('SELECT NOW()');
-    if (dbRes && dbRes.rows.length > 0) dbStatus = 'connected';
+    const dbRes = await pool.query("SELECT NOW()");
+    if (dbRes && dbRes.rows.length > 0) dbStatus = "connected";
   } catch (err) {
     dbStatus = `error: ${err.message}`;
   }
 
-  const isHealthy = dbStatus === 'connected';
+  const isHealthy = dbStatus === "connected";
 
   // 2. Return HTTP 200 (OK) if database responds, or 503 (Error) if it failed
   res.status(isHealthy ? 200 : 503).json({
-    status: isHealthy ? 'UP' : 'DEGRADED',
+    status: isHealthy ? "UP" : "DEGRADED",
     timestamp: new Date().toISOString(),
     uptimeSeconds: Math.floor(process.uptime()),
     database: dbStatus,
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || "development",
   });
 });
 ```
 
 ### When everything is healthy, it returns:
+
 ```json
 {
   "status": "UP",
@@ -121,18 +123,23 @@ app.get('/api/health', async (req, res) => {
 You don't need to manually install Node or PostgreSQL. **Docker Compose** does all the heavy lifting!
 
 ### Step 1: Open Your Terminal
+
 Open PowerShell, Command Prompt, or terminal, and navigate to the project:
+
 ```bash
 cd "d:\Current Projects\Cloud and DevOps Projects\ci-cd-pipeline-project\ci-cd-pipeline-app"
 ```
 
 ### Step 2: Launch with Docker Compose
+
 Run this single command:
+
 ```bash
 docker compose up --build
 ```
 
 ### 📺 What Docker Does Behind the Scenes:
+
 1. 📥 Pulls `postgres:16-alpine` and mounts `db/init.sql` to create your database tables.
 2. 🔨 Builds the Express API container and connects it to PostgreSQL.
 3. 🔨 Builds the React app and configures Nginx on Port 80.
@@ -144,14 +151,16 @@ docker compose up --build
 
 Once you see `🚀 DevOps Backend API running on port 5000` in your terminal, open:
 
-| What to Open | URL | What You Should See |
-| :--- | :--- | :--- |
-| ⚛️ **Frontend UI** | [http://localhost](http://localhost) | The dark-mode dashboard with real-time green health badges and interactive task list! |
-| 🩺 **Backend Health API** | [http://localhost:5000/api/health](http://localhost:5000/api/health) | JSON response with `"status": "UP"` and `"database": "connected"` |
-| 📋 **Tasks API** | [http://localhost:5000/api/tasks](http://localhost:5000/api/tasks) | JSON array of tasks loaded from PostgreSQL |
+| What to Open              | URL                                                                  | What You Should See                                                                   |
+| :------------------------ | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| ⚛️ **Frontend UI**        | [http://localhost](http://localhost)                                 | The dark-mode dashboard with real-time green health badges and interactive task list! |
+| 🩺 **Backend Health API** | [http://localhost:5000/api/health](http://localhost:5000/api/health) | JSON response with `"status": "UP"` and `"database": "connected"`                     |
+| 📋 **Tasks API**          | [http://localhost:5000/api/tasks](http://localhost:5000/api/tasks)   | JSON array of tasks loaded from PostgreSQL                                            |
 
 ### 🛑 How to Stop the App:
+
 Press `Ctrl + C` in your terminal, or run:
+
 ```bash
 docker compose down
 ```
@@ -163,19 +172,23 @@ docker compose down
 In a real job, you should always run tests locally before pushing code to GitHub!
 
 ### 1. Test the Backend (Jest & Supertest):
+
 ```bash
 cd server
 npm install
 npm test
 ```
+
 ✅ You will see 6 passing tests validating the health check, tasks listing, validation, and error handling!
 
 ### 2. Test the Frontend (Vitest):
+
 ```bash
 cd ../client
 npm install
 npm test
 ```
+
 ✅ You will see Vitest render the React component and verify that the header and badges display properly!
 
 ---
@@ -185,18 +198,23 @@ npm test
 > [!TIP]
 > **Capture your proof of work!** Save your screenshots into `docs/screenshots/` and link them here:
 
-### 🖼️ Screenshot 1: Application Running Locally in Browser
-<!-- Replace with your screenshot path once taken -->
-![Local Application Dashboard](./screenshots/01-local-app-running.png)
-*Caption: React Frontend + Express Backend + PostgreSQL running locally at http://localhost with healthy badges.*
+### 🖼️ Screenshot 1: Application Running Locally in docker desktop
 
-### 🖼️ Screenshot 2: Automated Tests Passing in Terminal
 <!-- Replace with your screenshot path once taken -->
-![Automated Tests Passing](./screenshots/02-local-tests-passing.png)
-*Caption: Jest and Supertest test suite passing with 6/6 green tests.*
+
+![Application Running Locally in docker desktop](./screenshots/01-application-running-docker-desktop.png)
+
+### 🖼️ Screenshot 2: Application Running Locally in browser
+
+![Application Running Locally in browser](./screenshots/02-application-running-browser.png)
+
+### 🖼️ Screenshot 3: Automated Tests Passing in Terminal
+
+![Automated Tests Passing in Terminal](./screenshots/03-automated-tests-passing.png)
 
 ---
 
 ## ⏭️ Ready for Day 3?
+
 Now let's examine the Dockerfiles and see how multi-stage builds work:  
 👉 **[Go to Step 3: 03-docker-and-containers.md](./03-docker-and-containers.md)**
